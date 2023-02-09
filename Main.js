@@ -10,8 +10,10 @@ const Main = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-      initialRouteName='home'
-      options={{headerShown : false}}
+       initialRouteName="home"
+        screenOptions={{
+          headerShown: false,
+        }}
       >
         <Stack.Group>
           <Stack.Screen name='home' component={Home} ></Stack.Screen>

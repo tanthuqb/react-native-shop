@@ -1,10 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Avatar, Button } from 'react-native-paper';
 import { colors, defaultStyle } from '../styles/styles';
 import Header from './Header';
+import ProductCard from './ProductCard';
 import SearchModal from './SearchModal';
 const Home = () => {
+  const navigate = useNavigation()
   const categories = [
     {
       category: 'Nice',
@@ -32,11 +35,24 @@ const Home = () => {
     }
   ]
 
-  const products = []
+  const products = [{
+    price : 231321,
+    name : "Sample",
+    _id : "a12121",
+    images : [
+      {
+        url : "https://picsum.photos/100/200"
+      },
+    ]
+  }]
 
   const [category, setCategory] = useState("")
   const [searchActive, setSearchActive] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+
+  const addToCardHanlder = (id) => {
+    console.log("Add to card ", id)
+  }
 
   const categoryButtonHandler = (id) => {
     setCategory(id)
@@ -71,7 +87,7 @@ const Home = () => {
 
 
           <View>
-            <TouchableOpacity  onPress={() => setSearchActive((prev) => !prev)}>
+            <TouchableOpacity onPress={() => setSearchActive((prev) => !prev)}>
               <Avatar.Icon icon={'magnify'} color={'gray'} style={{ backgroundColor: colors.color2, elevation: 12 }} size={50}></Avatar.Icon>
             </TouchableOpacity>
           </View>
@@ -101,14 +117,32 @@ const Home = () => {
                   }}
                 >{item.category}</Text>
               </Button>
-            ))
+            ))}
+          </ScrollView>
+        </View>
+
+        {/* Product */}
+        <View style={{ flex: 1 }}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {
+              products.map((item, index) => (
+                <ProductCard
+                  stock={item.stock}
+                  name={item.name}
+                  price={item.price}
+                  image={item.images[0]?.url}
+                  id={item._id}
+                  addToCardHanlder={addToCardHanlder}
+                  key={item._id}
+                  i={index}
+                  navigate={navigate}
+                />
+              ))
             }
           </ScrollView>
-          {/* Product */}
         </View>
       </View>
     </>
-
   )
 }
 
