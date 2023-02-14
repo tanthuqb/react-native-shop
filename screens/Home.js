@@ -3,9 +3,10 @@ import React, { useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Avatar, Button } from 'react-native-paper';
 import { colors, defaultStyle } from '../styles/styles';
-import Header from './Header';
-import ProductCard from './ProductCard';
-import SearchModal from './SearchModal';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import ProductCard from '../components/ProductCard';
+import SearchModal from '../components/SearchModal';
 const Home = () => {
   const navigate = useNavigation()
   const categories = [
@@ -142,6 +143,8 @@ const Home = () => {
           </ScrollView>
         </View>
       </View>
+
+      <Footer activeRoute={'home'} />
     </>
   )
 }

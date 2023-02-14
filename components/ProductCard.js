@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button } from "react-native-paper";
 import { colors } from '../styles/styles';
 
 const ProductCard = ({
@@ -17,14 +17,14 @@ const ProductCard = ({
   return (
     <TouchableOpacity activeOpacity={1} onPress={() => navigate.navigate("productdetails", { id })}>
       <View style={{
-        elevation: 15,
-        width: 250,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        margin: 20,
-        borderRadius: 20,
-        height: 400,
-        backgroundColor: i % 2 === 0 ? colors.color1 : colors.color2
+          elevation: 15,
+          width: 250,
+          alignItems: "center",
+          justifyContent: "space-between",
+          margin: 20,
+          borderRadius: 20,
+          height: 400,
+          backgroundColor: i % 2 === 0 ? colors.color1 : colors.color2,
       }}>
 
         <Image
@@ -35,7 +35,7 @@ const ProductCard = ({
             resizeMode: "contain",
             position: "absolute",
             left: 50,
-            top: 105
+            top: 105,
           }}
         />
         <View style={{
@@ -55,17 +55,26 @@ const ProductCard = ({
             fontSize: 20,
             fontWeight: '700'
           }} >${price}</Text>
+
         </View>
-        <TouchableOpacity style={{
-          backgroundColor: i % 2 === 0 ? colors.color2 : colors.color3,
-          borderRadius: 0,
-          paddingVertical: 5,
-          borderBottomRightRadius: 20,
-          borderBottomLeftRadius: 20,
-          width: "100%"
-        }}>
+        <TouchableOpacity
+          style={{
+            backgroundColor: i % 2 === 0 ? colors.color2 : colors.color3,
+            borderRadius: 0,
+            paddingVertical: 5,
+            borderBottomRightRadius: 20,
+            borderBottomLeftRadius: 20,
+            width: "100%",
+          }}
+        >
           <Button
-            onPress={() => addToCardHandler(id, name, price, image, stock)}
+            onPress={() => addToCardHanlder(id, name, price, image, stock)}
+            textColor={i % 2 === 0 ? colors.color1 : colors.color2}
+          >
+            Add To Cart
+          </Button>
+          <Button
+            onPress={() => addToCardHanlder(id, name, price, image, stock)}
             textColor={i % 2 === 0 ? colors.color1 : colors.color2}
           >
             Add To Cart
